@@ -16,7 +16,8 @@ namespace AddressBookApp
             {
                 Console.WriteLine("1. Add Contact");
                 Console.WriteLine("2. Edit Contact");
-                Console.WriteLine("3. Show All Contacts");
+                Console.WriteLine("3. Delete Contact");
+                Console.WriteLine("4. Show All Contacts");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -82,6 +83,16 @@ namespace AddressBookApp
                     addressBook.EditContact(firstName, lastName);
                 }
                 else if (choice == "3")
+                {
+                    Console.Write("Enter First Name: ");
+                    string? firstName = Console.ReadLine();
+
+                    Console.Write("Enter Last Name: ");
+                    string? lastName = Console.ReadLine();
+
+                    addressBook.DeleteContact(firstName, lastName);
+                }
+                else if (choice == "4")
                 {
                     Console.WriteLine("\nAll Contacts:");
                     addressBook.PrintAll();
