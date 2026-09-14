@@ -1,1 +1,5 @@
-<Solution />
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="AddressBookApp/AddressBookApp.csproj" />
+  </Folder>
+</Solution>
