@@ -66,9 +66,15 @@ namespace AddressBookApp
                     try
                     {
                         validator.Validate(contact);
-                        addressBook.AddContact(contact);
 
-                        Console.WriteLine("Contact added successfully.");
+                        if (addressBook.AddContact(contact))
+                        {
+                            Console.WriteLine("Contact added successfully.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Contact already exists.");
+                        }
                     }
                     catch (InvalidContactException ex)
                     {

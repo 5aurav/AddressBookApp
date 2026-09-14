@@ -12,9 +12,19 @@ namespace AddressBookApp.Services
         private List<Contact> contacts = new List<Contact>();
         public IReadOnlyList<Contact> Contacts => contacts;
 
-        public void AddContact(Contact contact)
+        public bool AddContact(Contact contact)
         {
+            bool isDuplicate = contacts.Any(c =>
+                c.FirstName == contact.FirstName &&
+                c.LastName == contact.LastName);
+
+            if (isDuplicate)
+            {
+                return false;
+            }
+
             contacts.Add(contact);
+            return true;
         }
 
         public void EditContact(string ?firstName, string ?lastName)
