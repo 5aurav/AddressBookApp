@@ -1,4 +1,6 @@
-﻿using AddressBookApp.Models;
+﻿using AddressBookApp.Exceptions;
+using AddressBookApp.Models;
+using AddressBookApp.Validation;
 
 namespace AddressBookApp
 {
@@ -17,7 +19,18 @@ namespace AddressBookApp
             "sauravkumaryadav2442005@gmail.com"
              );
 
-            Console.WriteLine(contact.ToString());
+            ContactValidator validator = new ContactValidator();
+
+            try
+            {
+                validator.Validate(contact);
+
+                Console.WriteLine(contact.ToString());
+            }
+            catch (InvalidContactException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
 
         }
     }
