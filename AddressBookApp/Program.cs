@@ -14,9 +14,9 @@ namespace AddressBookApp
 
             while (true)
             {
-                Console.WriteLine("\nAddress Book");
                 Console.WriteLine("1. Add Contact");
-                Console.WriteLine("2. Show All Contacts");
+                Console.WriteLine("2. Edit Contact");
+                Console.WriteLine("3. Show All Contacts");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -72,6 +72,16 @@ namespace AddressBookApp
                     }
                 }
                 else if (choice == "2")
+                {
+                    Console.Write("Enter First Name: ");
+                    string? firstName = Console.ReadLine();
+
+                    Console.Write("Enter Last Name: ");
+                    string? lastName = Console.ReadLine();
+
+                    addressBook.EditContact(firstName, lastName);
+                }
+                else if (choice == "3")
                 {
                     Console.WriteLine("\nAll Contacts:");
                     addressBook.PrintAll();
