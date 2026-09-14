@@ -1,5 +1,6 @@
 ﻿using AddressBookApp.Exceptions;
 using AddressBookApp.Models;
+using AddressBookApp.Services;
 using AddressBookApp.Validation;
 
 namespace AddressBookApp
@@ -8,30 +9,83 @@ namespace AddressBookApp
     {
         static void Main(String[] args)
         {
-            Contact contact = new Contact(
-            "Saurav",
-            "Yadav",
-            "House no 585 Sector 32A",
-            "Chandigarh",
-            "Chandigarh",
-            "160030",
-            "7087626063",
-            "sauravkumaryadav2442005@gmail.com"
-             );
-
+            AddressBook addressBook = new AddressBook();
             ContactValidator validator = new ContactValidator();
 
-            try
+            while (true)
             {
-                validator.Validate(contact);
+                Console.WriteLine("\nAddress Book");
+                Console.WriteLine("1. Add Contact");
+                Console.WriteLine("2. Show All Contacts");
+                Console.WriteLine("0. Exit");
+                Console.Write("Enter your choice: ");
 
-                Console.WriteLine(contact.ToString());
-            }
-            catch (InvalidContactException ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
+                string choice = Console.ReadLine();
 
+                if (choice == "1")
+                {
+                    Console.Write("Enter First Name: ");
+                    string ?firstName = Console.ReadLine();
+
+                    Console.Write("Enter Last Name: ");
+                    string ?lastName = Console.ReadLine();
+
+                    Console.Write("Enter Address: ");
+                    string ?address = Console.ReadLine();
+
+                    Console.Write("Enter City: ");
+                    string ?city = Console.ReadLine();
+
+                    Console.Write("Enter State: ");
+                    string ?state = Console.ReadLine();
+
+                    Console.Write("Enter Zip: ");
+                    string ?zip = Console.ReadLine();
+
+                    Console.Write("Enter Phone Number: ");
+                    string ?phoneNumber = Console.ReadLine();
+
+                    Console.Write("Enter Email: ");
+                    string ?email = Console.ReadLine();
+
+                    Contact contact = new Contact(
+                        firstName,
+                        lastName,
+                        address,
+                        city,
+                        state,
+                        zip,
+                        phoneNumber,
+                        email
+                    );
+
+                    try
+                    {
+                        validator.Validate(contact);
+                        addressBook.AddContact(contact);
+
+                        Console.WriteLine("Contact added successfully.");
+                    }
+                    catch (InvalidContactException ex)
+                    {
+                        Console.WriteLine($"Error: {ex.Message}");
+                    }
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine("\nAll Contacts:");
+                    addressBook.PrintAll();
+                }
+                else if (choice == "0")
+                {
+                    Console.WriteLine("Exiting Address Book.");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid choice.");
+                }
+            }
         }
     }
 }
