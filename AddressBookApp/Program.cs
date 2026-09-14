@@ -11,6 +11,8 @@ namespace AddressBookApp
         {
             AddressBook addressBook = new AddressBook();
             ContactValidator validator = new ContactValidator();
+            AddressBookMain addressBookMain = new AddressBookMain();
+            addressBookMain.AddAddressBook(addressBook);
 
             while (true)
             {
@@ -18,10 +20,11 @@ namespace AddressBookApp
                 Console.WriteLine("2. Edit Contact");
                 Console.WriteLine("3. Delete Contact");
                 Console.WriteLine("4. Show All Contacts");
+                Console.WriteLine("5. Total Contact Count");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
-                string choice = Console.ReadLine();
+                string ?choice = Console.ReadLine();
 
                 if (choice == "1")
                 {
@@ -96,6 +99,10 @@ namespace AddressBookApp
                 {
                     Console.WriteLine("\nAll Contacts:");
                     addressBook.PrintAll();
+                }
+                else if (choice == "5")
+                {
+                    Console.WriteLine($"Total Contacts: {addressBookMain.GetTotalContactCount()}");
                 }
                 else if (choice == "0")
                 {
