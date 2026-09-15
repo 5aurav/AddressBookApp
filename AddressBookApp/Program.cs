@@ -23,6 +23,7 @@ namespace AddressBookApp
                 Console.WriteLine("5. Total Contact Count");
                 Console.WriteLine("6. Search by City");
                 Console.WriteLine("7. Search by State");
+                Console.WriteLine("8. View by City/State");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -131,6 +132,10 @@ namespace AddressBookApp
                     {
                         Console.WriteLine(contact);
                     }
+                }
+                else if (choice == "8")
+                {
+                    addressBook.ViewByCityOrState();
                 }
                 else if (choice == "0")
                 {

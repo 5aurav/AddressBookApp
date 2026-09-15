@@ -146,6 +146,37 @@ namespace AddressBookApp.Services
             return contacts.Where(c => c.State == state).ToList();
         }
 
+        public void ViewByCityOrState()
+        {
+            Console.WriteLine("--- By City ---");
+
+            var contactsByCity = contacts.GroupBy(c => c.City);
+
+            foreach (var group in contactsByCity)
+            {
+                Console.WriteLine($"{group.Key}:");
+
+                foreach (Contact contact in group)
+                {
+                    Console.WriteLine(contact.FirstName + " " + contact.LastName);
+                }
+            }
+
+            Console.WriteLine("--- By State ---");
+
+            var contactsByState = contacts.GroupBy(c => c.State);
+
+            foreach (var group in contactsByState)
+            {
+                Console.WriteLine($"{group.Key}:");
+
+                foreach (Contact contact in group)
+                {
+                    Console.WriteLine(contact.FirstName + " " + contact.LastName);
+                }
+            }
+        }
+
         public void PrintAll()
         {
             foreach (Contact contact in contacts)
