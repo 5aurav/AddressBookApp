@@ -24,6 +24,7 @@ namespace AddressBookApp
                 Console.WriteLine("6. Search by City");
                 Console.WriteLine("7. Search by State");
                 Console.WriteLine("8. View by City/State");
+                Console.WriteLine("9. Count by City/State");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -136,6 +137,10 @@ namespace AddressBookApp
                 else if (choice == "8")
                 {
                     addressBook.ViewByCityOrState();
+                }
+                else if (choice == "9")
+                {
+                    addressBook.GetCountByCityOrState();
                 }
                 else if (choice == "0")
                 {
