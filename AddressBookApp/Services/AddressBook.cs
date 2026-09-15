@@ -135,6 +135,17 @@ namespace AddressBookApp.Services
 
             Console.WriteLine("Contact deleted successfully.");
         }
+
+        public List<Contact> SearchByCity(string city)
+        {
+            return contacts.Where(c => c.City == city).ToList();
+        }
+
+        public List<Contact> SearchByState(string state)
+        {
+            return contacts.Where(c => c.State == state).ToList();
+        }
+
         public void PrintAll()
         {
             foreach (Contact contact in contacts)

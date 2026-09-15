@@ -21,6 +21,8 @@ namespace AddressBookApp
                 Console.WriteLine("3. Delete Contact");
                 Console.WriteLine("4. Show All Contacts");
                 Console.WriteLine("5. Total Contact Count");
+                Console.WriteLine("6. Search by City");
+                Console.WriteLine("7. Search by State");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -109,6 +111,26 @@ namespace AddressBookApp
                 else if (choice == "5")
                 {
                     Console.WriteLine($"Total Contacts: {addressBookMain.GetTotalContactCount()}");
+                }
+                else if (choice == "6")
+                {
+                    Console.Write("Enter City: ");
+                    string ?city = Console.ReadLine();
+                    List<Contact> results = addressBook.SearchByCity(city);
+                    foreach (Contact contact in results)
+                    {
+                        Console.WriteLine(contact);
+                    }
+                }
+                else if (choice == "7")
+                {
+                    Console.Write("Enter State: ");
+                    string ?state = Console.ReadLine();
+                    List<Contact> results = addressBook.SearchByState(state);
+                    foreach (Contact contact in results)
+                    {
+                        Console.WriteLine(contact);
+                    }
                 }
                 else if (choice == "0")
                 {
