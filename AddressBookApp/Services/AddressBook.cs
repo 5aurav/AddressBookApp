@@ -206,6 +206,18 @@ namespace AddressBookApp.Services
             Console.WriteLine();
         }
 
+        public void SortByName()
+        {
+            var sortedContacts = contacts
+                .OrderBy(c => c.FirstName)
+                .ThenBy(c => c.LastName);
+
+            foreach (Contact contact in sortedContacts)
+            {
+                Console.WriteLine(contact.ToString());
+            }
+        }
+
         public void PrintAll()
         {
             foreach (Contact contact in contacts)
