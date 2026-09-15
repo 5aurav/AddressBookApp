@@ -26,6 +26,7 @@ namespace AddressBookApp
                 Console.WriteLine("8. View by City/State");
                 Console.WriteLine("9. Count by City/State");
                 Console.WriteLine("10. Sort by Name");
+                Console.WriteLine("11. Sort by City / State / Zip");
                 Console.WriteLine("0. Exit");
                 Console.Write("Enter your choice: ");
 
@@ -146,6 +147,32 @@ namespace AddressBookApp
                 else if (choice == "10")
                 {
                     addressBook.SortByName();
+                }
+                else if (choice == "11")
+                {
+                    Console.WriteLine("1. Sort by City");
+                    Console.WriteLine("2. Sort by State");
+                    Console.WriteLine("3. Sort by Zip");
+                    Console.Write("Enter your choice: ");
+
+                    string? sortChoice = Console.ReadLine();
+
+                    if (sortChoice == "1")
+                    {
+                        addressBook.SortByCity();
+                    }
+                    else if (sortChoice == "2")
+                    {
+                        addressBook.SortByState();
+                    }
+                    else if (sortChoice == "3")
+                    {
+                        addressBook.SortByZip();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid choice.");
+                    }
                 }
                 else if (choice == "0")
                 {
